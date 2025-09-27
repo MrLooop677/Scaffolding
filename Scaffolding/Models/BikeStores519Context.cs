@@ -45,10 +45,16 @@ public partial class BikeStores519Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=PC-46;Initial Catalog=BikeStores519;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;");
+        => optionsBuilder.UseSqlServer("Data Source=PC-46;Initial Catalog=BikeStores519-5;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder )
     {
+        modelBuilder.Entity<Category>() 
+            .HasData(new Category
+            {
+                CategoryId = 1, 
+                CategoryName="test eslam"
+            });
         modelBuilder.Entity<Brand>(entity =>
         {
             entity.HasKey(e => e.BrandId).HasName("PK__brands__5E5A8E2732D961DC");
